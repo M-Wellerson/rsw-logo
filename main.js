@@ -8,7 +8,6 @@ const camera   = new THREE.PerspectiveCamera(75, width / height, 1, 1000);
 renderer.setSize(width, height);
 document.body.appendChild(renderer.domElement);
 
-
 loader.load("scene.json", function (object) {
     let clock      = new THREE.Clock();
     object.scale.x = object.scale.y = object.scale.z = 9;
