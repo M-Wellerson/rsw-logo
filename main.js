@@ -8,15 +8,18 @@ const camera   = new THREE.PerspectiveCamera(75, width / height, 1, 1000);
 renderer.setSize(width, height);
 document.body.appendChild(renderer.domElement);
 
+controls = new THREE.OrbitControls(  
+    camera, 
+    renderer.domElement
+);
+controls.enableZoom = false;
+controls.minPolarAngle = Math.PI * 0.4;
+controls.maxPolarAngle = Math.PI * 0.6;
+this.controls.rotateSpeed = 0.07;
+
 loader.load("scene.json", function (object) {
     let clock      = new THREE.Clock();
     object.scale.x = object.scale.y = object.scale.z = 9;
-
-    controls = new THREE.OrbitControls(  
-        camera, 
-        renderer.domElement
-    );
-    controls.enableZoom = false;
 
     scene.add(object);
     scene.add(camera);
@@ -47,12 +50,6 @@ loader.load("scene.json", function (object) {
     let clock      = new THREE.Clock();
     object.scale.x = object.scale.y = object.scale.z = 9;
 
-    controls = new THREE.OrbitControls(  
-        camera, 
-        renderer.domElement
-    );
-    controls.enableZoom = false;
-
     scene.add(object);
     scene.add(camera);
 
@@ -81,12 +78,6 @@ loader.load("second-arc.json", function (object) {
     let clock      = new THREE.Clock();
     object.scale.x = object.scale.y = object.scale.z = 68.8;
     object.position.y = -20;
-
-    controls = new THREE.OrbitControls(  
-        camera, 
-        renderer.domElement
-    );
-    controls.enableZoom = false;
 
     var mesh  = new THREE.MeshBasicMaterial( { color : 0x4ac4b6, side: THREE.BackSide } );
     var mesh1 = new THREE.Mesh( object, mesh );
@@ -118,12 +109,6 @@ loader.load("second-arc.json", function (object) {
     let clock      = new THREE.Clock();
     object.scale.x = object.scale.y = object.scale.z = 68.8;
     object.position.y = -20;
-
-    controls = new THREE.OrbitControls(  
-        camera, 
-        renderer.domElement
-    );
-    controls.enableZoom = false;
 
     var mesh  = new THREE.MeshBasicMaterial( { color : 0x4ac4b6, side: THREE.BackSide } );
     var mesh1 = new THREE.Mesh( object, mesh );
