@@ -1,25 +1,37 @@
-const width    = window.innerWidth;
-const height   = window.innerHeight;
-const renderer = new THREE.WebGLRenderer({ antialias: true });
-const scene    = new THREE.Scene();
-const loader   = new THREE.ObjectLoader();
-const camera   = new THREE.PerspectiveCamera(75, width / height, 1, 1000);
+const width     = window.innerWidth;
+const height    = window.innerHeight;
+const renderer  = new THREE.WebGLRenderer({ antialias: true });
+const scene     = new THREE.Scene();
+const loader    = new THREE.ObjectLoader();
+const camera    = new THREE.PerspectiveCamera(75, width / height, 1, 1000);
+const windowHalf = new THREE.Vector2( window.innerWidth / 2, window.innerHeight / 2 );
 
+function onResize( event ) {
+	const width  = window.innerWidth;
+	const height = window.innerHeight;
+  
+    windowHalf.set( width / 2, height / 2 );	
+    camera.aspect = width / height;
+	camera.updateProjectionMatrix();
+	renderer.setSize( width, height );				
+}
+
+window.addEventListener( 'resize', onResize, false );
 renderer.setSize(width, height);
 document.body.appendChild(renderer.domElement);
 
-controls = new THREE.OrbitControls(  
+controls = new THREE.OrbitControls(
     camera, 
     renderer.domElement
 );
-controls.enableZoom = false;
+controls.enableZoom    = false;
 controls.minPolarAngle = Math.PI * 0.4;
 controls.maxPolarAngle = Math.PI * 0.6;
-this.controls.rotateSpeed = 0.07;
+controls.rotateSpeed   = 0.07;
 
 loader.load("scene.json", function (object) {
     let clock      = new THREE.Clock();
-    object.scale.x = object.scale.y = object.scale.z = 9;
+    object.scale.x = object.scale.y = object.scale.z = 13;
 
     scene.add(object);
     scene.add(camera);
@@ -48,7 +60,7 @@ loader.load("scene.json", function (object) {
 
 loader.load("scene.json", function (object) {
     let clock      = new THREE.Clock();
-    object.scale.x = object.scale.y = object.scale.z = 9;
+    object.scale.x = object.scale.y = object.scale.z = 13;
 
     scene.add(object);
     scene.add(camera);
@@ -76,7 +88,7 @@ loader.load("scene.json", function (object) {
 
 loader.load("second-arc.json", function (object) {
     let clock      = new THREE.Clock();
-    object.scale.x = object.scale.y = object.scale.z = 68.8;
+    object.scale.x = object.scale.y = object.scale.z = 91;
     object.position.y = -20;
 
     var mesh  = new THREE.MeshBasicMaterial( { color : 0x4ac4b6, side: THREE.BackSide } );
@@ -107,7 +119,7 @@ loader.load("second-arc.json", function (object) {
 
 loader.load("second-arc.json", function (object) {
     let clock      = new THREE.Clock();
-    object.scale.x = object.scale.y = object.scale.z = 68.8;
+    object.scale.x = object.scale.y = object.scale.z = 91;
     object.position.y = -20;
 
     var mesh  = new THREE.MeshBasicMaterial( { color : 0x4ac4b6, side: THREE.BackSide } );
