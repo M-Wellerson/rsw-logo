@@ -16,7 +16,7 @@ function mouseSet(object) {
     target.x = ( 1 - mouse.x ) * 0.002;
     target.y = ( 1 - mouse.y ) * 0.002;
     
-    object.rotation.x += 0.03 * ( target.y - object.rotation.x );
+    object.rotation.x += 0.01 * ( target.y - object.rotation.x );
     object.rotation.y += 0.01 * ( target.x - .1 * clock.getDelta());
     document.addEventListener( 'mousemove', onMouseMove, false );
 }
